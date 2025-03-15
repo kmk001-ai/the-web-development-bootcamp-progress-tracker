@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Progression</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<header>
+    <h1>My Web Dev Journey</h1>
+    <nav>
+      <ul>
+        <li><a href="#progress">Progress</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="progress">
+        <h2>Course Progression</h2>
+        <!-- Add this after your h2 in the progress section -->
+<div class="progress-status">
+    Progress: <span id="progress-counter">0/36 (0%)</span>
+  </div>
+  
+  <!-- Optional: Add a visual progress bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+        <ol>
+            <li><input type="checkbox" id="intro-web-dev"><label for="intro-web-dev">Introduction to Web Development</label></li>
+<li><input type="checkbox" id="intro-html"><label for="intro-html">Introduction to HTML</label></li>
+<li><input type="checkbox" id="intermediate-html"><label for="intermediate-html">Intermediate HTML</label></li>
+<li><input type="checkbox" id="intro-css"><label for="intro-css">Introduction to CSS</label></li>
+<li><input type="checkbox" id="intermediate-css"><label for="intermediate-css">Intermediate CSS</label></li>
+<li><input type="checkbox" id="flexbox"><label for="flexbox">Flexbox</label></li>
+<li><input type="checkbox" id="grid"><label for="grid">Grid</label></li>
+<li><input type="checkbox" id="bootstrap"><label for="bootstrap">Bootstrap</label></li>
+<li><input type="checkbox" id="web-design"><label for="web-design">Web Design School</label></li>
+<li><input type="checkbox" id="js-fundamentals"><label for="js-fundamentals">JavaScript Fundamentals</label></li>
+<li><input type="checkbox" id="js-dom"><label for="js-dom">JavaScript DOM Manipulation</label></li>
+<li><input type="checkbox" id="js-advanced-dom"><label for="js-advanced-dom">JavaScript Advanced DOM Manipulation</label></li>
+<li><input type="checkbox" id="dom"><label for="dom">Document Object Model (DOM)</label></li>
+<li><input type="checkbox" id="js-es6"><label for="js-es6">JavaScript ES6 & Modern JavaScript</label></li>
+<li><input type="checkbox" id="js-control-flow"><label for="js-control-flow">JavaScript Control Flow</label></li>
+<li><input type="checkbox" id="js-functions"><label for="js-functions">JavaScript Functions</label></li>
+<li><input type="checkbox" id="js-arrays"><label for="js-arrays">JavaScript Arrays</label></li>
+<li><input type="checkbox" id="js-objects"><label for="js-objects">JavaScript Objects</label></li>
+<li><input type="checkbox" id="js-scope"><label for="js-scope">JavaScript Scope and Hoisting</label></li>
+<li><input type="checkbox" id="js-debugging"><label for="js-debugging">JavaScript Debugging</label></li>
+<li><input type="checkbox" id="backend"><label for="backend">Backend Web Development</label></li>
+<li><input type="checkbox" id="nodejs"><label for="nodejs">Node.js</label></li>
+<li><input type="checkbox" id="expressjs"><label for="expressjs">Express.js</label></li>
+<li><input type="checkbox" id="ejs"><label for="ejs">EJS (Embedded JavaScript)</label></li>
+<li><input type="checkbox" id="apis"><label for="apis">APIs</label></li>
+<li><input type="checkbox" id="git"><label for="git">Git, GitHub and Version Control</label></li>
+<li><input type="checkbox" id="databases"><label for="databases">Databases</label></li>
+<li><input type="checkbox" id="sql"><label for="sql">SQL</label></li>
+<li><input type="checkbox" id="mongodb"><label for="mongodb">MongoDB</label></li>
+<li><input type="checkbox" id="mongoose"><label for="mongoose">Mongoose</label></li>
+<li><input type="checkbox" id="authentication"><label for="authentication">Authentication & Security</label></li>
+<li><input type="checkbox" id="reactjs"><label for="reactjs">React.js</label></li>
+<li><input type="checkbox" id="web3"><label for="web3">Web3 Development</label></li>
+<li><input type="checkbox" id="portfolio"><label for="portfolio">Build Your Developer Portfolio</label></li>
+<li><input type="checkbox" id="deploying"><label for="deploying">Deploying Websites</label></li>
+<li><input type="checkbox" id="final-project"><label for="final-project">Final Project</label></li>
+
+        </ol>
+      
+    </section>
+    <!-- Add this script tag before the closing </body> tag -->
+<script>
+    // Get all checkboxes
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    
+    // Load saved checkbox states when page loads
+    window.addEventListener('DOMContentLoaded', function() {
+      checkboxes.forEach(checkbox => {
+        // Get saved state from localStorage
+        const isChecked = localStorage.getItem(checkbox.id) === 'true';
+        checkbox.checked = isChecked;
+        
+        // Update progress counter
+        updateProgressCounter();
+      });
+    });
+    
+    // Save checkbox state when changed
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        // Save state to localStorage
+        localStorage.setItem(this.id, this.checked);
+        
+        // Update progress counter
+        updateProgressCounter();
+      });
+    });
+    
+    // Function to update progress counter
+    function updateProgressCounter() {
+      const totalCourses = checkboxes.length;
+      const completedCourses = document.querySelectorAll('input[type="checkbox"]:checked').length;
+      const progressPercent = Math.round((completedCourses / totalCourses) * 100);
+      
+      // Update progress counter element
+      const progressCounter = document.getElementById('progress-counter');
+      if (progressCounter) {
+        progressCounter.textContent = `${completedCourses}/${totalCourses} (${progressPercent}%)`;
+      }
+    }
+    function updateProgressCounter() {
+  const totalCourses = checkboxes.length;
+  const completedCourses = document.querySelectorAll('input[type="checkbox"]:checked').length;
+  const progressPercent = Math.round((completedCourses / totalCourses) * 100);
+  
+  // Update progress counter element
+  const progressCounter = document.getElementById('progress-counter');
+  if (progressCounter) {
+    progressCounter.textContent = `${completedCourses}/${totalCourses} (${progressPercent}%)`;
+  }
+  
+  // Update progress bar
+  const progressBar = document.getElementById('progress-bar');
+  if (progressBar) {
+    progressBar.style.width = progressPercent + '%';
+  }
+}
+  </script>
+  </main>
+  <footer>
+    <p>© 2025 - Angela Yu Bootcamp Tracker</p>
+  </footer>
+</html>
